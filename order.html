@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now - Travel Wisata</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .product-details, .order-form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #4CAF50;
+        }
+        .success-message {
+            text-align: center;
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="order.html">Order Now</a>
+        </nav>
+        <h2>Order Now</h2>
+        <div class="product-details">
+            <h3 id="product-name">Product Name</h3>
+            <p id="product-description">Product Description</p>
+            <p id="product-price">Product Price</p>
+        </div>
+        <div class="order-form">
+            <h3>Order Form</h3>
+            <form id="order-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="address">Address</label>
+                <textarea id="address" name="address" required></textarea>
+
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" name="quantity" required min="1">
+
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+        <div class="success-message" id="success-message" style="display:none;">
+            Your order has been placed successfully!
+        </div>
+    </div>
+    <script>
+        // Retrieve product details from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = urlParams.get('name');
+        const productDescription = urlParams.get('description');
+        const productPrice = urlParams.get('price');
+
+        // Display product details
+        document.getElementById('product-name').textContent = productName;
+        document.getElementById('product-description').textContent = productDescription;
+        document.getElementById('product-price').textContent = productPrice;
+
+        // Add event listener to the form
+        document.getElementById('order-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            document.getElementById('success-message').style.display = 'block'; // Show success message
+        });
+    </script>
+</body>
+</html>
